@@ -42,7 +42,7 @@ app.post('/shorten', async (req, res) => {
     });
 
     await newUrl.save();
-    res.send({ shortUrl: `http://localhost:3001/${shortUrl}` });
+    res.send({ shortUrl: `https://shorten-url-flax.vercel.app/${shortUrl}` });
 });
 
 // Handle URL redirection and collect data
@@ -68,5 +68,5 @@ app.get('/:shortUrl', async (req, res) => {
 });
 
 app.listen(3001, () => {
-    console.log('Server running on http://localhost:3001');
+    console.log('Server running on http://localhost:3001 & deployed on https://shorten-url-flax.vercel.app/');
 });

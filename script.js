@@ -3,7 +3,7 @@ document.getElementById('shortenBtn').addEventListener('click', function() {
 
     if (originalUrl) {
         // Send the URL to the backend server
-        fetch('http://localhost:3001/shorten', {
+        fetch('https://shorten-url-flax.vercel.app/shorten', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
