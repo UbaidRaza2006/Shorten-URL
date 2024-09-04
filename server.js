@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: 'https://shorten-url-flax.vercel.app', // Your deployed domain
+    origin: 'https://shorten-url-rho.vercel.app', // Your deployed domain
     methods: 'GET,POST',
     allowedHeaders: 'Content-Type'
 };
@@ -47,7 +47,7 @@ app.post('/shorten', async (req, res) => {
     });
 
     await newUrl.save();
-    res.send({ shortUrl: `https://shorten-url-flax.vercel.app/${shortUrl}` });
+    res.send({ shortUrl: `https://shorten-url-rho.vercel.app/${shortUrl}` });
 });
 
 
