@@ -42,7 +42,7 @@ app.post('/shorten', async (req, res) => {
     });
 
     await newUrl.save();
-    res.send({ shortUrl: `http://localhost:3000/${shortUrl}` });
+    res.send({ shortUrl: `http://localhost:3001/${shortUrl}` });
 });
 
 // Handle URL redirection and collect data
