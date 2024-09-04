@@ -35,7 +35,7 @@ const urlSchema = new mongoose.Schema({
 
 const Url = mongoose.model('Url', urlSchema);
 
-app.post('/shorten', async (req, res) => {
+app.post('https://shorten-url-rho.vercel.app/shorten', async (req, res) => {
     const { originalUrl } = req.body;
     const shortUrl = shortid.generate();
 
@@ -51,7 +51,7 @@ app.post('/shorten', async (req, res) => {
 });
 
 
-app.get('/:shortUrl', async (req, res) => {
+app.get('https://shorten-url-rho.vercel.app/:shortUrl', async (req, res) => {
     const shortUrl = req.params.shortUrl;
     const urlData = await Url.findOne({ shortUrl });
 
