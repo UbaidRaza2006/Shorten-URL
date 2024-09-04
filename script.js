@@ -3,7 +3,7 @@ document.getElementById('shortenBtn').addEventListener('click', function() {
 
     if (originalUrl) {
         // Send the URL to the backend server
-        fetch('/shorten', {  // Using relative URL to make sure it works on both local and deployed environments
+        fetch('https://shorten-url-rho.vercel.app/shorten', {  // Using relative URL to make sure it works on both local and deployed environments
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
