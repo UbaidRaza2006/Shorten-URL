@@ -3,7 +3,7 @@ document.getElementById('shortenBtn').addEventListener('click', function() {
 
     if (originalUrl) {
         // Send the URL to the backend server
-        fetch('https://shorten-url-flax.vercel.app/shorten', {
+        fetch('/shorten', { // This will automatically use the same domain as the frontend
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -18,6 +18,7 @@ document.getElementById('shortenBtn').addEventListener('click', function() {
             console.error('Error:', error);
             alert('Something went wrong, please try again.');
         });
+        
     } else {
         alert('Please enter a valid URL');
     }

@@ -8,7 +8,15 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+    origin: 'https://shorten-url-flax.vercel.app', // Your deployed domain
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type'
+};
+
+app.use(cors(corsOptions));
+
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
@@ -18,8 +26,6 @@ mongoose.connect(process.env.MONGO_URI)
     console.error("Error connecting to MongoDB Atlas:", err);
   });
 
-
-// Schema and Model
 const urlSchema = new mongoose.Schema({
     originalUrl: String,
     shortUrl: String,
@@ -29,7 +35,6 @@ const urlSchema = new mongoose.Schema({
 
 const Url = mongoose.model('Url', urlSchema);
 
-// Create short URL
 app.post('/shorten', async (req, res) => {
     const { originalUrl } = req.body;
     const shortUrl = shortid.generate();
@@ -45,7 +50,6 @@ app.post('/shorten', async (req, res) => {
     res.send({ shortUrl: `https://shorten-url-flax.vercel.app/${shortUrl}` });
 });
 
-// Handle URL redirection and collect data
 app.get('/:shortUrl', async (req, res) => {
     const shortUrl = req.params.shortUrl;
     const urlData = await Url.findOne({ shortUrl });
@@ -67,6 +71,6 @@ app.get('/:shortUrl', async (req, res) => {
     }
 });
 
-app.listen(3001, () => {
-    console.log('Server running on http://localhost:3001 & deployed on https://shorten-url-flax.vercel.app/');
+app.listen(process.env.PORT || 3001, () => {
+    console.log('Server running on http://localhost:3001');
 });
