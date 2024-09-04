@@ -50,6 +50,7 @@ app.post('/shorten', async (req, res) => {
     res.send({ shortUrl: `https://shorten-url-flax.vercel.app/${shortUrl}` });
 });
 
+
 app.get('/:shortUrl', async (req, res) => {
     const shortUrl = req.params.shortUrl;
     const urlData = await Url.findOne({ shortUrl });
