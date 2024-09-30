@@ -19,11 +19,31 @@ document.getElementById('shortenBtn').addEventListener('click', async function()
             const data = await response.json();
             document.getElementById('shortUrl').value = data.shortUrl;
 
+            // Enable buttons after the URL is fetched
+            document.getElementById('copyBtn').disabled = false;
+            document.getElementById('visitBtn').disabled = false;
+
         } catch (error) {
             console.error('Error:', error);
             alert('Something went wrong. Please try again.');
         }
     } else {
         alert('Please enter a valid URL.');
+    }
+});
+
+// Copy shortened URL to clipboard
+document.getElementById('copyBtn').addEventListener('click', function() {
+    const shortUrlInput = document.getElementById('shortUrl');
+    shortUrlInput.select();
+    document.execCommand('copy');
+    alert('Shortened URL copied to clipboard!');
+});
+
+// Visit the shortened URL in a new tab
+document.getElementById('visitBtn').addEventListener('click', function() {
+    const shortUrl = document.getElementById('shortUrl').value;
+    if (shortUrl) {
+        window.open(shortUrl, '_blank');
     }
 });
