@@ -141,3 +141,33 @@ button:disabled {
     opacity: 0.6;
 }
 
+.input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+.clear-icon {
+    position: absolute;
+    right: 10px; /* Adjust based on padding of the input */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    font-size: 18px;
+    display: none; /* Hide initially */
+}
+
+input[type="text"]:focus + .clear-icon {
+    display: block; /* Show icon when the input is focused */
+}
+
+input[type="text"]:not(:placeholder-shown) + .clear-icon {
+    display: block; /* Show icon when there's text in the input */
+}
+
+
+.button-group button i {
+    margin-right: 10px;
+    font-size: 18px;
+    vertical-align: middle;
+}

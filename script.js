@@ -47,3 +47,8 @@ document.getElementById('visitBtn').addEventListener('click', function() {
         window.open(shortUrl, '_blank');
     }
 });
+
+
+function clearInput(inputId) {
+    document.getElementById(inputId).value = '';
+}
