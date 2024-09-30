@@ -1,35 +1,29 @@
-document.getElementById('shortenBtn').addEventListener('click', function() {
+document.getElementById('shortenBtn').addEventListener('click', async function() {
     const originalUrl = document.getElementById('originalUrl').value;
 
     if (originalUrl) {
-        // Send the URL to the backend server
-        fetch('https://shorten-url-rho.vercel.app/shorten', {  // Using relative URL to make sure it works on both local and deployed environments
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ originalUrl })
-        })
-        .then(response => response.text())  // First get the response as text
-        .then(text => {
-            try {
-                return JSON.parse(text);  // Attempt to parse it as JSON
-            } catch (error) {
-                throw new Error('Response is not valid JSON: ' + text);
+        try {
+            // Send the original URL to the backend to generate the short URL
+            const response = await fetch('https://shorten-url-api.vercel.app/shorten', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ originalUrl })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to shorten the URL');
             }
-        })
-        .then(data => {
-            if (data && data.shortUrl) {
-                document.getElementById('shortUrl').value = data.shortUrl;
-            } else {
-                throw new Error('Invalid response data');
-            }
-        })
-        .catch(error => {
+
+            const data = await response.json();
+            document.getElementById('shortUrl').value = data.shortUrl;
+
+        } catch (error) {
             console.error('Error:', error);
-            alert('Something went wrong, please try again.');
-        });
+            alert('Something went wrong. Please try again.');
+        }
     } else {
-        alert('Please enter a valid URL');
+        alert('Please enter a valid URL.');
     }
 });
