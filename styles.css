@@ -171,3 +171,23 @@ input[type="text"]:not(:placeholder-shown) + .clear-icon {
     font-size: 18px;
     vertical-align: middle;
 }
+
+.visitImg{
+    width: 10%;
+}
+
+.inputParent {
+    position: relative;
+    width: 100%; /* Ensure the container takes full width */
+}
+
+.clearImg {
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    right: 10px; /* Position on the right side */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+    cursor: pointer; /* Optional: Change cursor to pointer */
+    z-index: 10; /* Ensure it's on top of the input field */
+}

@@ -12,7 +12,10 @@
         <h1>URL SHORTENER</h1>
         <div class="input-group">
             <label for="originalUrl">Enter Original URL:</label>
+            <div class="inputParent">
             <input type="text" id="originalUrl" placeholder="Paste your original link here...">
+            <img class="clearImg" src="icons8-clear-50.png" alt="clear">
+        </div>
         </div>
         <button id="shortenBtn">Generate Shortened URL</button>
         <div class="result-group">
@@ -20,11 +23,13 @@
             <input type="text" id="shortUrl" readonly>
             <div class="button-group">
                 <button id="copyBtn" disabled>
-                    <i class="fas fa-copy"></i> 
+                    <img class="visitImg" src="icons8-copy-50.png" alt="c">
+                    <!-- <i class="fas fa-copy"></i>  -->
                     Copy URL
                 </button>
                 <button id="visitBtn" disabled>
-                    <i class="fas fa-external-link-alt"></i> 
+                    <img class="visitImg" src="icons8-external-link-24.png" alt="v">
+                    <!-- <i class="fas fa-external-link-alt"></i>  -->
                     Visit URL
                 </button>
             </div>
