@@ -73,11 +73,10 @@ label {
     font-size: 18px;
 }
 
-/* Update the input field to add space for the clear icon */
 input[type="text"] {
     width: 100%;
     padding: 14px;
-    padding-right: 40px; /* Add padding to the right to make space for the clear icon */
+    padding-right: 40px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-sizing: border-box;
@@ -122,7 +121,6 @@ button#shortenBtn:active {
     transform: translateY(1px);
 }
 
-/* Default disabled button styling for other buttons */
 button:disabled {
     background: #ccc;
     cursor: not-allowed;
@@ -142,13 +140,35 @@ button:disabled {
 
 .button-group {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row; /* Align buttons in a row */
+    justify-content: center; /* Center the button group horizontally */
     margin-top: 10px;
 }
 
 .button-group button {
-    flex: 1; /* Make buttons take equal space */
+    min-width: 250px; /* Keep the button size consistent */
+    height: 50px; /* Set a fixed height for uniformity */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Align items vertically center */
+    justify-content: center; /* Center the content */
     margin: 0 5px; /* Space between buttons */
+}
+
+.button-group button img {
+    margin-right: 10px; /* Space between the icon and text */
+    vertical-align: middle; /* Align the icon with the text */
+}
+
+@media (max-width: 650px) {
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons horizontally when stacked */
+    }
+
+    .button-group button {
+        width: 50%; /* Ensure buttons take full width when stacked */
+        margin-bottom: 10px; /* Space between buttons */
+    }
 }
 
 .input-with-icon {
@@ -181,7 +201,7 @@ input[type="text"]:not(:placeholder-shown) + .clear-icon {
     vertical-align: middle;
 }
 
-.visitImg{
+.visitImg {
     width: 10%;
 }
 
