@@ -73,9 +73,11 @@ label {
     font-size: 18px;
 }
 
+/* Update the input field to add space for the clear icon */
 input[type="text"] {
     width: 100%;
     padding: 14px;
+    padding-right: 40px; /* Add padding to the right to make space for the clear icon */
     border: 1px solid #ddd;
     border-radius: 10px;
     box-sizing: border-box;
@@ -102,15 +104,29 @@ button {
     transition: background 0.3s ease, transform 0.3s ease;
     position: relative;
     z-index: 1;
+    min-width: 250px; /* Button size remains the same */
+    text-align: center;
 }
 
-button:hover {
+button#shortenBtn.disabled {
+    pointer-events: none; /* Disable clicks */
+    opacity: 1; /* Keep button color the same */
+}
+
+button#shortenBtn:hover {
     background: linear-gradient(135deg, #feb47b, #ff7e5f);
     transform: translateY(-3px);
 }
 
-button:active {
+button#shortenBtn:active {
     transform: translateY(1px);
+}
+
+/* Default disabled button styling for other buttons */
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .result-group {
@@ -133,12 +149,6 @@ button:active {
 .button-group button {
     flex: 1; /* Make buttons take equal space */
     margin: 0 5px; /* Space between buttons */
-}
-
-button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    opacity: 0.6;
 }
 
 .input-with-icon {
@@ -165,7 +175,6 @@ input[type="text"]:not(:placeholder-shown) + .clear-icon {
     display: block; /* Show icon when there's text in the input */
 }
 
-
 .button-group button i {
     margin-right: 10px;
     font-size: 18px;
@@ -190,4 +199,10 @@ input[type="text"]:not(:placeholder-shown) + .clear-icon {
     transform: translateY(-50%); /* Adjust vertical alignment */
     cursor: pointer; /* Optional: Change cursor to pointer */
     z-index: 10; /* Ensure it's on top of the input field */
+}
+
+#loader {
+    margin-top: 10px;
+    color: #ff7e5f;
+    font-size: 16px;
 }
